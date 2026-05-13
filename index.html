@@ -1,174 +1,64 @@
-// --- HTML 指引页 (使用全局 CITIES 变量) ---
-function generateHTML() {
-  const cities = [
-    { p: 'all', n: '全省赛程' }, { p: 'nanjing', n: '南京' }, 
-    { p: 'yangzhou', n: '扬州' }, { p: 'suzhou', n: '苏州' }, 
-    { p: 'changzhou', n: '常州' }, { p: 'wuxi', n: '无锡' }, 
-    { p: 'nantong', n: '南通' }, { p: 'xuzhou', n: '徐州' }, 
-    { p: 'huaian', n: '淮安' }, { p: 'yancheng', n: '盐城' }, 
-    { p: 'lianyungang', n: '连云港' }, { p: 'taizhou', n: '泰州' }, 
-    { p: 'suqian', n: '宿迁' }, { p: 'zhenjiang', n: '镇江' }
-  ];
-
-  return `
-  <!DOCTYPE html>
-  <html>
-  <head>
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "2026江苏城市足球联赛 (苏超)",
-  "startDate": "2026-04-11",
-  "location": {
-    "@type": "Place",
-    "name": "江苏省各城市赛场"
-  },
-  "description": "提供最新的苏超赛程订阅及门票预约提醒。",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://sc.qing.day",
-    "price": "0",
-    "priceCurrency": "CNY"
-  }
-}
-</script>
-
     <title>苏超赛程日历订阅</title>
     <style>
-      /* 使用你提供的新 CSS 样式 */
-      body {
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          background-color: #f4f4f4;
-          color: #374151;
-          margin: 0;
-          padding: 20px;
-      }
-      h1 {
-          color: #201f1c;
-          font-size: 28px;
-          font-weight: 700;
-          text-align: center;
-          margin: 40px 0 20px 0;
-      }
-      .notice-box {
-          background-color: #ffffffff;
-          border: 1px solid #afafafff;
-          color: #374151;
-          padding: 15px 20px;
-          border-radius: 8px;
-          margin: 20px auto;
-          max-width: 800px;
-          font-size: 14px;
-          line-height: 1.6;
-      }
-      .link-container {
-          background-color: #FFFFFF;
-          border-radius: 12px;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-          max-width: 800px;
-          margin: 20px auto;
-          padding: 20px;
-      }
-      .subscription-item {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 16px;
-      }
-      .subscription-item a {
-          color: #737373;
-          text-decoration: none;
-          font-weight: 500;
-          word-break: break-all;
-      }
-      .subscription-item a:hover {
-          color: #545252ff;
-          text-decoration: underline;
-      }
-      .copy-btn {
-          background-color: #151515d9;
-          color: #FFFFFF;
-          border: none;
-          padding: 6px 14px;
-          border-radius: 6px;
-          font-size: 14px;
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-          flex-shrink: 0;
-          margin-left: 15px;
-      }
-      .copy-btn:hover {
-          background-color: #737373;
-      }
-      .city-name {
-          font-weight: 600;
-          color: #d15a56ff;
-          margin-bottom: 6px;
-          display: block;
-      }
-      .subscription-item + .subscription-item {
-          border-top: 1px solid #E5E7EB;
-          padding-top: 16px;
-      }
-      .footer {
-          text-align: center;
-          margin-top: 40px;
-          padding-top: 20px;
-          border-top: 1px solid #E5E7EB;
-          font-size: 14px;
-      }
-      .footer a { color: #737373; text-decoration: none; margin: 0 10px; }
-      @media (max-width: 600px) {
-          .subscription-item {
-              flex-direction: column;
-              align-items: flex-start;
-          }
-          .copy-btn {
-              margin-top: 8px;
-              width: 100%;
-              text-align: center;
-              margin-left: 0;
-          }
-      }
+        body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-color: #f4f4f4; color: #374151; margin: 0; padding: 20px; }
+        h1 { color: #201f1c; font-size: 28px; font-weight: 700; text-align: center; margin: 40px 0 20px 0; }
+        .notice-box { background-color: #ffffff; border: 1px solid #afafaf; padding: 15px 20px; border-radius: 8px; margin: 20px auto; max-width: 800px; font-size: 14px; line-height: 1.6; }
+        .link-container { background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); max-width: 800px; margin: 20px auto; padding: 20px; }
+        .subscription-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+        .subscription-item a { color: #737373; text-decoration: none; font-weight: 500; word-break: break-all; }
+        .subscription-item a:hover { color: #545252; text-decoration: underline; }
+        .copy-btn { background-color: #151515d9; color: #FFFFFF; border: none; padding: 6px 14px; border-radius: 6px; font-size: 14px; cursor: pointer; flex-shrink: 0; margin-left: 15px; }
+        .city-name { font-weight: 600; color: #d15a56; margin-bottom: 6px; display: block; }
+        .subscription-item + .subscription-item { border-top: 1px solid #E5E7EB; padding-top: 16px; }
+        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #E5E7EB; font-size: 14px; }
+        .footer a { color: #737373; text-decoration: none; margin: 0 10px; }
+        @media (max-width: 600px) { .subscription-item { flex-direction: column; align-items: flex-start; } .copy-btn { margin-top: 8px; width: 100%; margin-left: 0; } }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <h1>⚽️ 苏超赛程订阅指引</h1>
-    
     <div class="notice-box">
-      💡 <b>建议操作：</b>点击下方链接可直接导入。更推荐<b>点击“复制链接”</b>，然后打开日历应用，通过“URL订阅/添加订阅日历”手动添加，这样赛程变动时会自动同步。
+        💡 <b>建议操作：</b>点击下方链接可直接导入。更推荐<b>点击“复制链接”</b>，然后打开日历应用，通过“URL订阅/添加订阅日历”手动添加。
     </div>
-
-    <div class="link-container">
-      ${cities.map(c => `
-        <div class="subscription-item">
-          <div>
-            <span class="city-name">${c.n}</span>
-            <a href="/${c.p}">https://sc.qing.day/${c.p}</a>
-          </div>
-          <button class="copy-btn" onclick="copyText('https://sc.qing.day/${c.p}')">复制链接</button>
-        </div>
-      `).join('')}
+    <div class="link-container" id="links">
+        <!-- 这里的列表由下方脚本动态生成，方便维护 -->
     </div>
-
     <div class="footer">
-      <a href="https://miying.tv" target="_blank">🎬 觅影(MiyingTV)</a>
-      <a href="https://u.jd.com/f6FzZqG" target="_blank">👕 购买正版球服</a>
-      <a href="https://s.c1ns.cn/YjVgh" target="_blank">🏨 预定酒店</a>
-      <p style="color:#9CA3AF; font-size:12px; margin-top:15px;">© 2026 qing.day | 江苏足球爱好者社区</p>
+        <a href="https://miying.tv" target="_blank">🎬 觅影(MiyingTV)</a>
+        <a href="https://u.jd.com/f6FzZqG" target="_blank">👕 购买正版球服</a>
+        <p>© 2026 qing.day | 江苏足球爱好者社区</p>
     </div>
-
     <script>
-      function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-          alert('订阅链接已复制，请前往日历应用通过“URL订阅”方式添加');
-        });
-      }
-   </script>
-  </body>
-  </html>
-  `;
-}
+        const DOMAIN = "https://sc.qing.day";
+        const cities = [
+            { p: 'all', n: '全省赛程' }, { p: 'nanjing', n: '南京' }, { p: 'yangzhou', n: '扬州' },
+            { p: 'suzhou', n: '苏州' }, { p: 'changzhou', n: '常州' }, { p: 'wuxi', n: '无锡' },
+            { p: 'nantong', n: '南通' }, { p: 'xuzhou', n: '徐州' }, { p: 'huaian', n: '淮安' },
+            { p: 'yancheng', n: '盐城' }, { p: 'lianyungang', n: '连云港' }, { p: 'taizhou', n: '泰州' },
+            { p: 'suqian', n: '宿迁' }, { p: 'zhenjiang', n: '镇江' }
+        ];
+        
+        const container = document.getElementById('links');
+        container.innerHTML = cities.map(c => `
+            <div class="subscription-item">
+                <div>
+                    <span class="city-name">${c.n}</span>
+                    <a href="${DOMAIN}/${c.p}">${DOMAIN}/${c.p}</a>
+                </div>
+                <button class="copy-btn" onclick="copyText('${DOMAIN}/${c.p}')">复制链接</button>
+            </div>
+        `).join('');
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('订阅链接已复制，请前往日历应用通过“URL订阅”方式添加');
+            });
+        }
+    </script>
+</body>
+</html>
