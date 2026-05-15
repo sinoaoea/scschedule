@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江苏城市足球联赛(苏超)赛程订阅</title>
+    <style>
+        :root { --primary: #d15a56; --dark: #1a1a1a; --gray: #737373; --bg: #f8f9fa; }
+        body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background-color: var(--bg); color: #333; margin: 0; padding: 20px; line-height: 1.5; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 0; }
+        h1 { font-size: 30px; color: var(--dark); margin: 0; font-weight: 800; }
+        .subtitle { color: var(--gray); margin-top: 10px; font-size: 15px; }
+
+        .notice-box { background: #fff; border-left: 4px solid var(--primary); padding: 15px 20px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 14px; }
+        
+        .group-title { font-size: 18px; font-weight: 700; color: var(--dark); margin: 30px 0 15px 0; display: flex; align-items: center; }
+        .group-title::before { content: ""; display: inline-block; width: 4px; height: 18px; background: var(--primary); margin-right: 10px; border-radius: 2px; flex-shrink: 0; }
+        .group-desc { font-size: 13px; color: var(--gray); font-weight: normal; margin-left: 10px; }
+
+        .link-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+        .sub-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #eee; }
+        .sub-item:last-child { border-bottom: none; }
+        .city-info { display: flex; flex-direction: column; }
+        .city-name { font-weight: 600; font-size: 16px; margin-bottom: 4px; color: #1f2937; }
+        .city-url { font-size: 12px; color: var(--gray); text-decoration: none; }
+        
+        .copy-btn { background: var(--dark); color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .copy-btn:hover { background: var(--primary); }
+
+        .footer { text-align: center; margin-top: 50px; padding: 30px 0; border-top: 1px solid #eee; color: var(--gray); font-size: 13px; }
+        .footer a { color: var(--gray); text-decoration: none; margin: 0 10px; }
+        
+        @media (max-width: 600px) {
+            .sub-item { flex-direction: column; align-items: flex-start; }
+            .copy-btn { margin-top: 12px; width: 100%; }
+            .group-title { flex-wrap: wrap; }
+            .group-desc { margin-left: 14px; margin-top: 2px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚽️ 江苏城市足球联赛订阅</h1>
+            <p class="subtitle">让草根足球的热血，同步到您的日历</p>
+        </header>
+
+        <div class="notice-box">
+            <b>订阅说明：</b> 点击链接可直接跳转导入。推荐<b>复制链接</b>后，在日历 App 中选择“添加订阅/网络日历”粘贴。赛程及比分将自动更新。
+        </div>
+
+        <div id="content"></div>
+
+        <div class="footer">
+            <p>
+                <a href="https://miying.tv" target="_blank">🎬 觅影(MiyingTV)</a> | 
+                <a href="https://wcs.qing.day" target="_blank">🏆 世界杯赛程</a>
+            </p>
+            <p>© 2026 sc.qing.day | 每一个进球都值得记录</p>
+        </div>
+    </div>
+
+    <script>
+        const DOMAIN = "https://sc.qing.day";
+        const GROUPS = [
+            {
+                title: "全省视野",
+                desc: "掌握苏超全省动态，不漏掉任何一场精彩对决",
+                cities: [{ p: 'all', n: '🚩 全省赛程汇总' }]
+            },
+            {
+                title: "苏南板块",
+                desc: "群雄逐鹿，江苏足球最硬核的传统阵地",
+                cities: [
+                    { p: 'nanjing', n: '南京' },
+                    { p: 'suzhou', n: '苏州' },
+                    { p: 'wuxi', n: '无锡' },
+                    { p: 'changzhou', n: '常州' },
+                    { p: 'zhenjiang', n: '镇江' }
+                ]
+            },
+            {
+                title: "苏中板块",
+                desc: "稳扎稳打，独具特色的绿茵风景线",
+                cities: [
+                    { p: 'yangzhou', n: '扬州' },
+                    { p: 'nantong', n: '南通' },
+                    { p: 'taizhou', n: '泰州' }
+                ]
+            },
+            {
+                title: "苏北板块",
+                desc: "豪放铁血，感受最纯粹的草根足球精神",
+                cities: [
+                    { p: 'xuzhou', n: '徐州' },
+                    { p: 'yancheng', n: '盐城' },
+                    { p: 'huaian', n: '淮安' },
+                    { p: 'lianyungang', n: '连云港' },
+                    { p: 'suqian', n: '宿迁' }
+                ]
+            }
+        ];
+
+        const content = document.getElementById('content');
+        content.innerHTML = GROUPS.map(group => `
+            <div class="group-title">
+                ${group.title} <span class="group-desc">${group.desc}</span>
+            </div>
+            <div class="link-card">
+                ${group.cities.map(c => `
+                    <div class="sub-item">
+                        <div class="city-info">
+                            <span class="city-name">${c.n}</span>
+                            <a class="city-url" href="${DOMAIN}/${c.p}">${DOMAIN}/${c.p}</a>
+                        </div>
+                        <button class="copy-btn" onclick="copyText('${DOMAIN}/${c.p}')">复制链接</button>
+                    </div>
+                `).join('')}
+            </div>
+        `).join('');
+
+        function copyText(text) {
+            const input = document.createElement('textarea');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            alert('订阅链接已复制！\n请前往手机日历，通过“添加订阅/网络日历”方式添加。');
+        }
+    </script>
+</body>
+</html>
