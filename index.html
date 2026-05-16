@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VC5S578D7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6VC5S578D7');
-</script>
     
-    <title>江苏城市足球联赛(苏超)赛程订阅</title>
+    <title>江苏城市足球联赛(苏超)赛程日历订阅_sc.qing.day</title>
+    <meta name="description" content="提供江苏城市足球联赛（苏超）各城市赛程日历订阅服务。一键同步全省汇总、苏南、苏中、苏北各赛区赛程至手机日历，全自动同步比赛比分与场地变动。">
+    <meta name="keywords" content="苏超赛程,江苏城市足球联赛,足球日历订阅,江苏业余足球,赛程ics">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VC5S578D7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6VC5S578D7');
+    </script>
+    
     <style>
         :root { --primary: #d15a56; --dark: #1a1a1a; --gray: #737373; --bg: #f8f9fa; }
         body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background-color: var(--bg); color: #333; margin: 0; padding: 20px; line-height: 1.5; }
@@ -24,6 +26,7 @@
 
         .notice-box { background: #fff; border-left: 4px solid var(--primary); padding: 15px 20px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 14px; }
         
+        /* 标题行基础样式 */
         .group-title { font-size: 18px; font-weight: 700; color: var(--dark); margin: 30px 0 15px 0; display: flex; align-items: center; }
         .group-title::before { content: ""; display: inline-block; width: 4px; height: 18px; background: var(--primary); margin-right: 10px; border-radius: 2px; flex-shrink: 0; }
         .group-desc { font-size: 13px; color: var(--gray); font-weight: normal; margin-left: 10px; }
@@ -38,13 +41,17 @@
         .copy-btn { background: var(--dark); color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
         .copy-btn:hover { background: var(--primary); }
 
+        /* 页脚与邮箱视觉统一 */
         .footer { text-align: center; margin-top: 50px; padding: 30px 0; border-top: 1px solid #eee; color: var(--gray); font-size: 13px; }
         .footer a { color: var(--gray); text-decoration: none; margin: 0 10px; }
+        .footer .contact-email { margin: 12px 0; color: #9ca3af; }
+        .footer .contact-email a { color: var(--primary); font-weight: 500; transition: color 0.2s; margin: 0 2px; }
+        .footer .contact-email a:hover { text-decoration: underline; color: #b84844; }
         
         @media (max-width: 600px) {
             .sub-item { flex-direction: column; align-items: flex-start; }
             .copy-btn { margin-top: 12px; width: 100%; }
-            .group-title { flex-wrap: wrap; }
+            .group-title { flex-direction: row; flex-wrap: wrap; align-items: center; }
             .group-desc { margin-left: 14px; margin-top: 2px; width: 100%; }
         }
     </style>
@@ -67,6 +74,7 @@
                 <a href="https://miying.tv" target="_blank">🎬 觅影(MiyingTV)</a> | 
                 <a href="https://wcs.qing.day" target="_blank">🏆 世界杯赛程</a>
             </p>
+            <p class="contact-email">📬 商务合作 / 纠错反馈: <a href="mailto:hello@qing.day">hello@qing.day</a></p>
             <p>© 2026 sc.qing.day | 每一个进球都值得记录</p>
         </div>
     </div>
