@@ -62,7 +62,7 @@
 </head>
 <body>
     <div class="container">
-               <header>
+        <header>
             <h1>⚽️ 江苏城市足球联赛订阅</h1>
             <p class="subtitle">让草根足球的热血，同步到您的日历</p>
             <p class="custom-link">
@@ -71,8 +71,22 @@
         </header>
 
         <div class="notice-box">
-            <b>订阅说明：</b> 点击链接可直接跳转导入。推荐<b>复制链接</b>后，在日历 App 中选择“添加订阅/网络日历”粘贴。赛程及比分将自动更新。
-            <b>安卓原生日历iCal协议同步工具：icsx5 ，</b> GitHub下载：https://github.com/bitfireAT/icsx5 百度盘下载：https://pan.baidu.com/s/1EYYWMCGS_Fw8JFQD9nH0Hw（提取码：ical）
+            <div class="notice-title">📅 订阅使用说明</div>
+            <p>点击下方城市链接可直接跳转导入。推荐<b>复制链接</b>后，在手机日历 App 中选择“添加订阅/网络日历”粘贴，赛程及比分将自动全自动同步。</p>
+            
+            <div class="android-tips">
+                <div class="android-tips-header">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.523 15.3414C17.523 15.7516 17.191 16.0836 16.7808 16.0836H15.1118V18.2526C15.1118 19.3496 14.2212 20.2402 13.1242 20.2402H10.8758C9.77881 20.2402 8.88824 19.3496 8.88824 18.2526V16.0836H7.21922C6.80905 16.0836 6.47705 15.7516 6.47705 15.3414V10.1554H17.523V15.3414ZM14.0044 6.70251L15.1843 4.6588C15.293 4.47061 15.2286 4.22941 15.0404 4.12066C14.8522 4.01192 14.611 4.07637 14.5023 4.26456L13.2676 6.40342C12.4647 6.13845 11.5353 6.13845 10.7324 6.40342L9.49774 4.26456C9.389 4.07637 9.14781 4.01192 8.95962 4.12066C8.77143 4.22941 8.707 4.47061 8.81574 4.6588L9.99557 6.70251C7.9942 7.55171 6.57014 9.47953 6.4842 11.7584H17.5158C17.4299 9.47953 16.0058 7.55171 14.0044 6.70251ZM9.85175 9.77095C9.52187 9.77095 9.25439 9.50346 9.25439 9.17359C9.25439 8.84371 9.52187 8.57623 9.85175 8.57623C10.1816 8.57623 10.4491 8.84371 10.4491 9.17359C10.4491 9.50346 10.1816 9.77095 9.85175 9.77095ZM14.1483 9.77095C13.8184 9.77095 13.5509 9.50346 13.5509 9.17359C13.5509 8.84371 13.8184 8.57623 14.1483 8.57623C14.4781 8.57623 14.7456 8.84371 14.7456 9.17359C14.7456 9.50346 14.4781 9.77095 14.1483 9.77095Z"/></svg>
+                    <span>安卓原生系统用户日历同步推荐</span>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #555;">部分安卓系统原生日历不支持直接导入网络链接，可使用开源同步工具 <b>icsx5</b>：</p>
+                <div class="android-links">
+                    <a href="https://github.com/bitfireAT/icsx5" target="_blank" class="android-btn gh">GitHub 下载</a>
+                    <a href="https://pan.baidu.com/s/1EYYWMCGS_Fw8JFQD9nH0Hw" target="_blank" class="android-btn bd">
+                        百度网盘下载 <span class="badge">提取码：ical</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div id="content"></div>
@@ -86,6 +100,39 @@
             <p>© 2026 sc.qing.day | 每一个进球都值得记录</p>
         </div>
     </div>
+
+    <div id="toast" class="toast">复制成功！请前往日历中添加订阅</div>
+
+    <style>
+        /* 复用原有主题变量，确保视觉一致 */
+        .notice-box { background: #fff; border-left: 4px solid var(--primary); padding: 22px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); font-size: 14.5px; color: #444; }
+        .notice-title { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 8px; }
+        .notice-box p { margin: 0 0 16px 0; line-height: 1.6; }
+        
+        /* 安卓独立小内嵌卡片 */
+        .android-tips { background: #f3f4f6; border-radius: 8px; padding: 14px 16px; border: 1px solid #e5e7eb; }
+        .android-tips-header { display: flex; align-items: center; gap: 6px; font-weight: 600; color: #065f46; font-size: 13.5px; margin-bottom: 8px; }
+        .android-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+        
+        /* 统一样式的卡片按钮 */
+        .android-btn { display: inline-flex; align-items: center; font-size: 12.5px; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-weight: 500; transition: all 0.2s; }
+        .android-btn.gh { background: #24292e; color: #fff; }
+        .android-btn.gh:hover { background: #000; }
+        .android-btn.bd { background: #0645a3; color: #fff; gap: 6px; }
+        .android-btn.bd:hover { background: #02337d; }
+        
+        /* 提取码轻量微标 */
+        .badge { background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-size: 11px; font-family: monospace; }
+
+        /* 现代 Toast 动画效果 */
+        .toast { position: fixed; bottom: -50px; left: 50%; transform: translateX(-50%); background: rgba(26, 26, 26, 0.95); color: #fff; padding: 12px 24px; border-radius: 30px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; opacity: 0; transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); }
+        .toast.show { bottom: 40px; opacity: 1; }
+
+        @media (max-width: 600px) {
+            .android-links { flex-direction: column; }
+            .android-btn { justify-content: center; width: 100%; box-sizing: border-box; }
+        }
+    </style>
 
     <script>
         const DOMAIN = "https://sc.qing.day";
@@ -146,14 +193,36 @@
             </div>
         `).join('');
 
+        // 现代化剪贴板及精致 Toast 提示
         function copyText(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showToast).catch(fallbackCopy);
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
             const input = document.createElement('textarea');
             input.value = text;
+            input.style.position = 'fixed'; // 避免页面滚动
             document.body.appendChild(input);
             input.select();
-            document.execCommand('copy');
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                alert('复制失败，请手动长按链接复制。');
+            }
             document.body.removeChild(input);
-            alert('订阅链接已复制！\n请前往手机日历，通过“添加订阅/网络日历”方式添加。');
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
         }
     </script>
 </body>
